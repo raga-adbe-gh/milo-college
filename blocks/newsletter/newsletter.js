@@ -5,7 +5,7 @@ export default async function init(el) {
   const { createTag } = await import(`${getLibs()}/utils/utils.js`);
   const memberList = createTag('ul', {});
   const resp = await fetch('/email-list.json');
-  if (!resp.json) return;
+  if (!resp.ok) return;
   const json = await resp.json();
   json.data.forEach(details => {
     const person = createTag('li', {},`${details.firstName} ${details.lastName}`);
