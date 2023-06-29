@@ -7,6 +7,7 @@ export default async function init(el) {
   const resp = await fetch('/email-list.json');
   if (!resp.ok) return;
   const json = await resp.json();
+  console.log(json);
   json.data.forEach(details => {
     const person = createTag('li', {},`${details.firstName} ${details.lastName}`);
     memberList.append(person);
